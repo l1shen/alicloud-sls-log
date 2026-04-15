@@ -54,7 +54,7 @@ export class Request {
             headers["x-acs-security-token"] = this.config.stsToken;
         }
 
-        if (options.body) {
+        if (typeof options.body !== "undefined") {
             headers["content-length"] = getBodyLength(options.body).toString();
             headers["content-md5"] = createHash("md5").update(options.body).digest("hex").toUpperCase();
         }
